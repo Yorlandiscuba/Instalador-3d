@@ -10,6 +10,12 @@ exit /b
 #PSSTART#
 # =============================================================================
 # Project Viewpoint - Instalador No-Steam / GOG / SteamCMD
+# Autor: Yorlandiscuba (Cuba)
+# https://github.com/Yorlandiscuba/Instalador-3d
+# Hecho dedicando la cuota diaria de luz.
+# Si te sirve, una estrella en GitHub.
+# Creadores de contenido: compartan este enlace (solo se muestra, no se descarga):
+# https://link-center.net/8163108/9gBRbsulo3vJ
 # Compatible con: GOG, Steam, instalaciones custom
 # Descarga mods via SteamCMD (anonimo), instala ZombieBuddy y configura todo
 # =============================================================================
@@ -88,6 +94,17 @@ $StateFile      = Join-SafePath $StateDir 'state.json'
 
 function Say([string]$msg, [string]$color = 'Gray') {
     Write-Host $msg -ForegroundColor $color
+}
+
+function Show-Credits {
+    Say 'Autor: Yorlandiscuba, cubano. Sobreviviendo en la isla a base de cuota de luz.' White
+    Say 'Este instalador salio de esa cuota. Si, la del dia. El ventilador tuvo que esperar.' DarkGray
+    Say 'Si te sirvio, una estrella no gasta corriente:' Cyan
+    Say 'https://github.com/Yorlandiscuba/Instalador-3d' White
+    Say 'Creadores de contenido: compartan ESTE enlace, no el repo pelado.' Yellow
+    Say 'Cada clic me ayuda a mejorar el script y a no pasarme el mes a oscuras:' Yellow
+    Say 'https://link-center.net/8163108/9gBRbsulo3vJ' White
+    Say 'Y credito al autor, que conste. Soy yo, el de la cuota.' DarkGray
 }
 
 function Ask-Path([string]$prompt, [string]$default = '') {
@@ -647,6 +664,8 @@ function Invoke-Setup {
     Say '  Project Viewpoint Setup  (No-Steam / GOG / SteamCMD)' Cyan
     Say '============================================================' Cyan
     Say ''
+    Show-Credits
+    Say ''
     Say 'Este script:' White
     Say '  1. Usa SteamCMD (anonimo) para descargar los mods del Workshop' Gray
     Say '  2. Los copia a Zomboid\mods y los deja activos en default.txt' Gray
@@ -821,6 +840,9 @@ function Invoke-Setup {
     Say '  - Si actualizas el juego, puede que haya que volver a correr este script.' DarkGray
     Say '  - Los backups de .bat y .json estan con extension .pvsetup.bak' DarkGray
     Say ''
+    Say '------------------------------------------------------------' DarkGray
+    Show-Credits
+    Say ''
     if ($downloaded.Count -lt $Mods.Count) {
         Say 'ADVERTENCIA: algunos mods no se descargaron.' Yellow
         Say 'Puedes volver a ejecutar este script mas tarde o descargarlos a mano.' Yellow
@@ -891,7 +913,7 @@ try {
     $form = New-Object System.Windows.Forms.Form
     $form.Text = 'Project Viewpoint Setup (No-Steam)'
     $form.StartPosition = 'CenterScreen'
-    $form.ClientSize = New-Object System.Drawing.Size(420, 200)
+    $form.ClientSize = New-Object System.Drawing.Size(460, 292)
     $form.FormBorderStyle = 'FixedDialog'
     $form.MaximizeBox = $false
     $form.TopMost = $true
@@ -899,7 +921,7 @@ try {
     $lbl = New-Object System.Windows.Forms.Label
     $lbl.Text = "Instala Project Viewpoint + ZombieBuddy sin necesidad de tener el juego en Steam.`nDescarga los mods con SteamCMD y configura el lanzador (.bat)."
     $lbl.Location = New-Object System.Drawing.Point(15, 15)
-    $lbl.Size = New-Object System.Drawing.Size(390, 55)
+    $lbl.Size = New-Object System.Drawing.Size(430, 55)
     $form.Controls.Add($lbl)
 
     $bSetup = New-Object System.Windows.Forms.Button
@@ -911,10 +933,16 @@ try {
 
     $bReset = New-Object System.Windows.Forms.Button
     $bReset.Text = 'Reset (Deshacer)'
-    $bReset.Location = New-Object System.Drawing.Point(220, 90)
+    $bReset.Location = New-Object System.Drawing.Point(250, 90)
     $bReset.Size = New-Object System.Drawing.Size(160, 50)
     $bReset.Add_Click({ $script:choice = 'reset'; $form.Close() })
     $form.Controls.Add($bReset)
+
+    $credit = New-Object System.Windows.Forms.Label
+    $credit.Text = "Autor: Yorlandiscuba, cubano. Hecho con la cuota de luz del dia.`nEstrella (no gasta corriente): github.com/Yorlandiscuba/Instalador-3d`nCreadores: compartan este link. Me ayuda a sobrevivir en la isla:`nhttps://link-center.net/8163108/9gBRbsulo3vJ"
+    $credit.Location = New-Object System.Drawing.Point(15, 155)
+    $credit.Size = New-Object System.Drawing.Size(430, 120)
+    $form.Controls.Add($credit)
 
     $form.AcceptButton = $bSetup
     [void]$form.ShowDialog()

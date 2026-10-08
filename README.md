@@ -2,7 +2,11 @@
 
 Instalador de Windows para [Project Viewpoint](https://steamcommunity.com/sharedfiles/filedetails/?id=3809306528) y los mods que necesita, pensado para quien tiene Project Zomboid por GOG, en una carpeta propia, o sin querer abrir el cliente de Steam.
 
-Todo el programa está en un solo archivo: [`Project-Viewpoint-Setup-NoSteam.bat`](Project-Viewpoint-Setup-NoSteam.bat). No baja otro script. No pide usuario ni contraseña de Steam.
+Todo el programa está en un solo archivo: [`Project-Viewpoint-Setup-steam-NoSteam.bat`](Project-Viewpoint-Setup-steam-NoSteam.bat). No baja otro script. No pide usuario ni contraseña de Steam.
+
+Autor: **Yorlandiscuba**, cubano. Este instalador salió de la cuota diaria de luz. Sí, la del día. El ventilador tuvo que esperar. Si te sirve, una estrella no gasta corriente: [github.com/Yorlandiscuba/Instalador-3d](https://github.com/Yorlandiscuba/Instalador-3d).
+
+Si creas contenido (video, guía o stream), comparte este enlace y no el repositorio pelado. Cada clic ayuda a mejorar el script y a no pasarse el mes a oscuras en la isla: [link-center.net/8163108/9gBRbsulo3vJ](https://link-center.net/8163108/9gBRbsulo3vJ). Crédito al autor, que conste. El script no abre ni descarga nada desde ese enlace: solo lo muestra.
 
 El juego **no** se descarga. Tiene que estar ya instalado.
 
@@ -29,7 +33,7 @@ El juego **no** se descarga. Tiene que estar ya instalado.
 ## Cómo usarlo
 
 1. Instala Project Zomboid (Steam, GOG u otra carpeta).
-2. Ejecuta `Project-Viewpoint-Setup-NoSteam.bat`.
+2. Ejecuta `Project-Viewpoint-Setup-steam-NoSteam.bat`.
 3. Elige **Setup (Instalar)** o **Reset (Deshacer)**.
 4. Si SteamCMD o el juego no se detectan solos, el script lo dice y abre el selector de carpetas de Windows.
 5. Para jugar, usa el acceso directo del Escritorio o `ProjectZomboid64.bat`. El `.exe` normal no carga el agente de ZombieBuddy.
@@ -203,7 +207,7 @@ El archivo es texto. Ábrelo y busca:
 
 | Buscar | Para ver |
 | --- | --- |
-| `https://` | La única URL: el zip de SteamCMD. |
+| `https://` | El zip de SteamCMD (la única descarga). El enlace de GitHub y el de link-center.net solo se muestran: el script no los abre ni baja nada desde ahí. |
 | `Invoke-WebRequest` | La única descarga hecha por el script (ese zip). |
 | `+login` | Tiene que decir `anonymous`. No hay otro login. |
 | `workshop_download_item` | AppID `108600` y los cinco ids de la tabla. |
